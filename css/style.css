@@ -53,6 +53,20 @@ tr:hover td   {
     font-family: Helvetica, sans-serif ;
 }
 
+.btResect {
+    display: inline-block;
+    margin: 15px 5px;
+    padding: 12px 10px;
+    color: #fff;
+    background-color:dodgerblue;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.btResect:hover {
+    color:turquoise;
+}
+
 footer {
     margin:10px;
     color: white;

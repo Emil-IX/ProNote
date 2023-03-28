@@ -15,6 +15,8 @@ function eventlistener() {
         imprimirHTML();
 
         agregarDatos();
+
+        botonResetear();
     })
 
 }
@@ -93,8 +95,12 @@ function imprimirHTML () {
         btnEliminar.innerHTML = '<td> Eliminar <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> </td>';
 
         btnEliminar.onclick = () => eliminarDato(id);
-    
+
+
+        //introducir elementos en flujo de html
         element.appendChild(btnEliminar);
+
+
     } );
 
     sincronizarStorage();
@@ -125,6 +131,23 @@ function limpiarHTML() {
         contenedor.removeChild(contenedor.firstChild)
      }
 }
+
+function botonResetear() {
+    //boton para recetear la pagina
+    const btnReset = document.createElement("div");
+    btnReset.classList.add('btResect');
+    btnReset.textContent = 'Resetear Pagina';
+
+    btnReset.onclick = () => {
+        location.reload()
+    };
+
+    const extra = document.querySelector('#extra')
+
+    extra.appendChild(btnReset);
+
+
+   }
 
 
 
