@@ -1,4 +1,4 @@
-
+// Proyecto practica
 const contenedor = document.querySelector('#contenedor')
 
 let datos = [];
