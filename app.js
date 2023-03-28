@@ -7,7 +7,7 @@ let datos = [];
 eventlistener();
 function eventlistener() {
 
-
+//Cargar las funciones desde que se inicie la pagìna
     document.addEventListener('DOMContentLoaded', ()=> {
         datos = JSON.parse(localStorage.getItem('datos')) || [];
         console.log(datos);
@@ -22,7 +22,7 @@ function eventlistener() {
 }
 
 
-
+//Agrega los datos que se introducen por medio del promp
 function agregarDatos() {
     let mensaje = confirm("¿Desea introducir un dato?")
 
@@ -40,6 +40,7 @@ function agregarDatos() {
 
     const {apellido, nombre, nota1, nota2, nota3, nota4 } = dato; 
 
+    //Validaciones
     if(apellido === "" ||  apellido === null || nombre === "" ||  nombre === null  ){  
 
         alert('nombre y apellido no puede estar vacios')
@@ -68,13 +69,14 @@ function agregarDatos() {
  
 }
 
-
+//imprime en el flujo del html
 function imprimirHTML () {
     
     limpiarHTML();
 
     datos.forEach( dato => {
         const {apellido, nombre, nota1, nota2, nota3, nota4 , promedio, id } = dato; 
+
 
         const element = document.createElement('tr');
         element.innerHTML = `
@@ -85,21 +87,21 @@ function imprimirHTML () {
          <td> ${nota3} </td>
          <td> ${nota4} </td>
          <td>${promedio}</td>
+         <td></td>
          `
-        contenedor.appendChild(element);
+      
 
-        
-        //boton para eliminar
-        const btnEliminar = document.createElement('button');
-        btnEliminar.classList.add('btn','boton');
-        btnEliminar.innerHTML = '<td> Eliminar <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> </td>';
+       const btnEliminar = document.createElement('p');
+       btnEliminar.classList.add('btnEliminar');
+       btnEliminar.innerHTML =  `
+       <p>x</p>
+       ` 
+       btnEliminar.onclick = () => eliminarDato(id);
 
-        btnEliminar.onclick = () => eliminarDato(id);
-
-
-        //introducir elementos en flujo de html
-        element.appendChild(btnEliminar);
-
+        //Introduce los datos en el flujo html
+       element.lastElementChild.appendChild(btnEliminar);
+       contenedor.appendChild(element);
+    
 
     } );
 
@@ -107,12 +109,13 @@ function imprimirHTML () {
 }
 
 
-
+//Introduce los datos en local storage para tenerlos disponibles
 function sincronizarStorage() {
     localStorage.setItem('datos',JSON.stringify(datos));
 }
 
 
+//Elimina los datos tanto del flujo html como en memoria
 function eliminarDato(id) {
     const confirmacion = confirm('¿Desea eliminar esta nota?')
 
@@ -126,11 +129,14 @@ function eliminarDato(id) {
   
 }
 
+
+//limpia el html para agregar los nuevos datos
 function limpiarHTML() {
     while(contenedor.firstChild) {
         contenedor.removeChild(contenedor.firstChild)
      }
 }
+
 
 function botonResetear() {
     //boton para recetear la pagina

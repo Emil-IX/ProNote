@@ -45,6 +45,22 @@ tr:hover td   {
     cursor: pointer;
 }
 
+.btnEliminar {
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: rgb(209, 41, 41) ;
+    padding: 7px;
+    margin: 5px auto;
+    text-align: center;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+
 .titulo {
     color: white;
     margin-top: 12px;
@@ -52,6 +68,7 @@ tr:hover td   {
     margin-left: 7px;
     font-family: Helvetica, sans-serif ;
 }
+
 
 .btResect {
     display: inline-block;
